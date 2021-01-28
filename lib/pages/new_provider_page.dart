@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:prozone/models/providers_model.dart';
-import 'package:prozone/view_models/new_provider_page_model.dart';
+
+import '../models/providers_model.dart';
+import '../view_models/new_provider_page_model.dart';
 
 class NewProviderPage extends StatefulWidget {
   static final route = 'new_provider_page';
@@ -79,21 +80,21 @@ class _NewProviderPageState extends State<NewProviderPage> {
     print("Args: ${args != null ? args.id : ''}");
 
     if (_args != null && !model.textEdited) {
-      // provNameController.text = _args.providerName;
-      // provAddressController.text = _args.address;
-      // provDescriptionController.text = _args.providerDescription;
-      // provTypeNameController.text = _args.typeName;
-      // provStateController.text = _args.stateName;
+      provNameController.text = _args.name;
+      provAddressController.text = _args.address;
+      provDescriptionController.text = _args.description;
+     provTypeNameController.text = _args.providerType;
+      provStateController.text = _args.state;
 
-      //let the model be aware of the values of the text fields
-      // Future.delayed(Duration.zero, (){
-      //   model.updateProviderName(_args.providerName);
-      //   model.updateProviderAddress(_args.address);
-      //   model.updateProviderDescription(_args.providerDescription);
-      //   model.updateProviderType(_args.typeName);
-      //   model.updateProviderState(_args.stateName);
-      //   model.updateId(_args.id.toString());
-      // });
+     // let the model be aware of the values of the text fields
+      Future.delayed(Duration.zero, (){
+        model.updateProviderName(_args.name);
+        model.updateProviderAddress(_args.address);
+        model.updateProviderDescription(_args.description);
+        model.updateProviderType(_args.providerType);
+        model.updateProviderState(_args.state);
+        model.updateId(_args.id.toString());
+      });
 
     }
 

@@ -17,11 +17,9 @@ class HttpHelper {
     try {
       final result =
           await http.get("$baseUrl/providers", headers: _getProvidersHeader);
-      print('The result of getProviders: ${json.decode(result.body)}');
 
       return result;
     } catch (error) {
-      print('The error is: $error');
       rethrow;
     }
   }
@@ -46,7 +44,6 @@ class HttpHelper {
           "state": state
         }),
       );
-      print('postProvider result: ${json.decode(result.body)}');
       if (result.statusCode != 200) {
         String message = 'Something went wrong';
         if (result.statusCode == 500)
@@ -84,7 +81,6 @@ class HttpHelper {
           "state": state
         }),
       );
-      print("Put result: ${json.decode(result.body)}");
 
       String message = "Something went wrong";
       if (result.statusCode == 404) {

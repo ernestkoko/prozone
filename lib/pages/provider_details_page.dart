@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prozone/models/providers_model.dart';
-import 'package:prozone/pages/edit_provider_page.dart';
-import 'package:prozone/pages/new_provider_page.dart';
+
+import './new_provider_page.dart';
+import '../models/providers_model.dart';
 
 class ProviderDetailsPage extends StatelessWidget {
   static final route = 'provider_details_page';
@@ -10,14 +10,17 @@ class ProviderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pro = ModalRoute.of(context).settings.arguments as ProvidersModel;
-   // print("Gotten pro: ${pro.imageList}");
+    // print("Gotten pro: ${pro.imageList}");
     return Scaffold(
       appBar: AppBar(
         title: Text('${pro.name}'),
         actions: [
-          FlatButton(onPressed: (){
-            Navigator.of(context).pushNamed(NewProviderPage.route, arguments: pro);
-          }, child: Text("Edit"))
+          FlatButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed(NewProviderPage.route, arguments: pro);
+              },
+              child: Text("Edit"))
         ],
       ),
       body: Container(
@@ -26,6 +29,8 @@ class ProviderDetailsPage extends StatelessWidget {
           listChild(context, 'Name', pro.name),
           listChild(context, 'Description', pro.description),
           listChild(context, 'Address', pro.address),
+          listChild(context, 'Rating', pro.rating==null?'Not set': pro.rating.toString()),
+
         ]),
       ),
     );

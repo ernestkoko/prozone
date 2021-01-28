@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozone/pages/edit_provider_page.dart';
-import 'package:prozone/pages/new_provider_page.dart';
-import 'package:prozone/pages/provider_details_page.dart';
-import 'package:prozone/view_models/home_page_model.dart';
+import './pages/new_provider_page.dart';
+import './pages/provider_details_page.dart';
+import './view_models/home_page_model.dart';
 
 import './pages/home_page.dart';
 
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
         routes: {
           ProviderDetailsPage.route: (ctx) => ProviderDetailsPage(),
           NewProviderPage.route: (ctx) => NewProviderPage.create(),
-          EditProviderPage.route: (ctx) => EditProviderPage(),
         },
       ),
     );
