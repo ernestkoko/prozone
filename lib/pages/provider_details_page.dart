@@ -13,7 +13,7 @@ class ProviderDetailsPage extends StatelessWidget {
    // print("Gotten pro: ${pro.imageList}");
     return Scaffold(
       appBar: AppBar(
-      //  title: Text('${pro.providerName}'),
+        title: Text('${pro.name}'),
         actions: [
           FlatButton(onPressed: (){
             Navigator.of(context).pushNamed(NewProviderPage.route, arguments: pro);
@@ -23,8 +23,8 @@ class ProviderDetailsPage extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.only(left: 10, top: 5, right: 10),
         child: ListView(children: [
-          //listChild(context, 'Name', pro.providerName),
-        //  listChild(context, 'Description', pro.providerDescription??''),
+          listChild(context, 'Name', pro.name),
+          listChild(context, 'Description', pro.description),
           listChild(context, 'Address', pro.address),
         ]),
       ),

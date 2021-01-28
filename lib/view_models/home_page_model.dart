@@ -14,35 +14,59 @@ class HomePageModel with ChangeNotifier {
     return [..._providers];
   }
 
-  List<ProvidersModel> get typeAndOnBoardingStatus {
-    print("typeAndOnBoarding Status called");
-    // return [..._providers.where((provider) => provider.providerName.contains(name)).toList()];
-  }
+  // List<ProvidersModel> get typeAndOnBoardingStatus {
+  //   print("typeAndOnBoarding Status called");
+  //   return [
+  //     ..._providers
+  //         .where((provider) => provider.providerName.contains(name))
+  //         .toList()
+  //   ];
+  // }
 
-  Future<void> getProviders() async {
-    try {
-      print('ListSS; ');
-      final result = await HttpHelper.getAllProviders();
-    final  body = json.decode(result.body) as List;
-    List<ProvidersModel> loaded =[];
-    List.from(body).forEach((element) {
-      // print("element: ${element['name']}");
-      loaded.add(ProvidersModel(
-        id: element['id'],
-        providerName: element['name'],
-        providerDescription: element['description'],
-        address: element['address'],
+  Stream<List<ProvidersModel>> homePageModelStream() async* {
+    final result = await HttpHelper.getAllProviders();
+    final body = json.decode(result.body) as List<dynamic>;
 
-      ));
-     // print('element1: }');
-    });
-
-   // _providers=loaded;
-      print("Result2: $body");
-      notifyListeners();
-
-    } catch (error) {
-      rethrow;
+    List<ProvidersModel> list=[];
+    for(var mid in body){
+      print('Each: $mid');
+      list.add(ProvidersModel.fromJson(mid));
     }
+    print("List of pro: $list");
+    yield list;
+
+
+
+
+
   }
+
+  // Future<void> getProviders() async {
+  //   try {
+  //     final result = await HttpHelper.getAllProviders();
+  //     final body = json.decode(result.body) as List;
+  //     List<ProvidersModel> loaded = [];
+  //     // loaded = body
+  //     //     .map((e) => ProvidersModel(id: e['id'], providerName: e['name']))
+  //     //     .toList();
+  //     body.forEach((element) {
+  //       print("element: ${element['name']}");
+  //       loaded.add(ProvidersModel(
+  //           id: element['id'],
+  //           providerName: element['name'],
+  //           providerDescription: element['description'],
+  //           address: element['address'],
+  //           type: element['provider_type']['name'],
+  //           stateName: element['state']['name']));
+  //       // print('element1: }');
+  //     });
+  //
+  //     _providers = loaded;
+  //     // _providers=loaded;
+  //     print("Result2: $body");
+  //     // notifyListeners();
+  //   } catch (error) {
+  //     rethrow;
+  //   }
+  // }
 }

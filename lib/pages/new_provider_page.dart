@@ -79,21 +79,21 @@ class _NewProviderPageState extends State<NewProviderPage> {
     print("Args: ${args != null ? args.id : ''}");
 
     if (_args != null && !model.textEdited) {
-      provNameController.text = _args.providerName;
-      provAddressController.text = _args.address;
-      provDescriptionController.text = _args.providerDescription;
-      provTypeNameController.text = _args.typeName;
-      provStateController.text = _args.stateName;
+      // provNameController.text = _args.providerName;
+      // provAddressController.text = _args.address;
+      // provDescriptionController.text = _args.providerDescription;
+      // provTypeNameController.text = _args.typeName;
+      // provStateController.text = _args.stateName;
 
       //let the model be aware of the values of the text fields
-      Future.delayed(Duration.zero, (){
-        model.updateProviderName(_args.providerName);
-        model.updateProviderAddress(_args.address);
-        model.updateProviderDescription(_args.providerDescription);
-        model.updateProviderType(_args.typeName);
-        model.updateProviderState(_args.stateName);
-        model.updateId(_args.id.toString());
-      });
+      // Future.delayed(Duration.zero, (){
+      //   model.updateProviderName(_args.providerName);
+      //   model.updateProviderAddress(_args.address);
+      //   model.updateProviderDescription(_args.providerDescription);
+      //   model.updateProviderType(_args.typeName);
+      //   model.updateProviderState(_args.stateName);
+      //   model.updateId(_args.id.toString());
+      // });
 
     }
 
